@@ -21,5 +21,6 @@ class G extends  Game{
         super.loading();
     }
 }
- var game = new G(document.getElementById('gameboard'));
+ let stage = new Stage(1000,1000);
+ let game = new G(document.getElementById('view'),stage);
  game.run(); 

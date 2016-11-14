@@ -31,7 +31,8 @@ var G = (function (_super) {
     };
     return G;
 }(Game));
-var game = new G(document.getElementById('gameboard'));
+var stage = new Stage(1000, 1000);
+var game = new G(document.getElementById('view'), stage);
 game.run();
 
 //# sourceMappingURL=DodgeBall.js.map

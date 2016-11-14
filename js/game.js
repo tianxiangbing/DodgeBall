@@ -1,4 +1,5 @@
 /// <reference path="sprite.ts" />
+/// <reference path="stage.ts" />
 //游戏主框架
 var STATE;
 (function (STATE) {
@@ -13,17 +14,23 @@ var STATE;
     STATE[STATE["gameOver"] = 8] = "gameOver";
 })(STATE || (STATE = {}));
 var Game = (function () {
-    function Game(stage) {
+    function Game(view, stage) {
+        this.view = view;
         this.stage = stage;
         this.func = new Function;
         this.interval = 20;
-        console.log(this.stage);
+        console.log(this.view);
         this.currentState = STATE.loading;
         this.setState(STATE.loading);
     }
+    Game.prototype.createStage = function () {
+        console.log(this.stage);
+        this.view.appendChild(this.stage.create());
+    };
     Game.prototype.run = function () {
         console.log('run');
         //this.func();
+        this.createStage(); //创建舞台
         this.setState(STATE.newGame);
     };
     //加载

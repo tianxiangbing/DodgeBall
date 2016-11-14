@@ -1,4 +1,5 @@
 /// <reference path="sprite.ts" />
+/// <reference path="stage.ts" />
 //游戏主框架
 enum STATE{
     loading,
@@ -16,14 +17,19 @@ class Game{
     private timer:any;
     private currentState:STATE;
     protected interval:number=20;
-    constructor(public stage){
-        console.log(this.stage)
+    constructor(public view,public stage:Stage){
+        console.log(this.view)
         this.currentState=STATE.loading;
         this.setState(STATE.loading);
+    }
+    createStage(){
+        console.log(this.stage)
+        this.view.appendChild(this.stage.create())
     }
     run(){
         console.log('run')
         //this.func();
+        this.createStage();//创建舞台
         this.setState(STATE.newGame);
     }
     //加载
